@@ -27,3 +27,17 @@ const images = [
 ];
 
 //
+
+//funzione che mi resetta lo stato al caricamento pagina
+
+
+const img_position= document.getElementById("lateral_img");
+for (let i = 0; i<images.length; i++){
+
+    let elemento = document.createElement("img")
+    elemento.src=`${images[i].image}`
+    img_position.appendChild(elemento);
+
+}
+
+//
