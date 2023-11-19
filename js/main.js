@@ -36,8 +36,85 @@ for (let i = 0; i<images.length; i++){
 
     let elemento = document.createElement("img")
     elemento.src=`${images[i].image}`
+    elemento.classList.add("slide")
+    if(i==0){
+        elemento.classList.add("active")
+    }
     img_position.appendChild(elemento);
 
 }
 
 //
+
+
+const immagini = images;
+const immagini_laterali= document.getElementsByClassName("slide");
+console.log(immagini);
+var actual = 0;
+
+//funzione che al click cambia immagine sopra
+document.getElementById("up").addEventListener("click" , function(){
+    let direction= "up";
+    imageMovement(direction);
+
+});
+
+document.getElementById("down").addEventListener("click" , function(){
+    let direction = "down";
+    imageMovement(direction);
+
+});
+
+
+
+function imageMovement(direction){
+
+    immagini_laterali[actual].classList.remove("active");
+
+    if (direction == "down"){
+        if(actual==images.length-1){
+        actual=0;
+        immagini_laterali[actual].classList.add("active")
+        }else{
+        actual ++;
+        immagini_laterali[actual].classList.add("active")
+    }}else{
+        if(actual==0){
+        actual=images.length-1;
+        immagini_laterali[actual].classList.add("active")
+        }else{
+        actual --;
+        immagini_laterali[actual].classList.add("active")
+    }}
+    
+    console.log(actual);
+    document.getElementById("img_container").innerHTML = "";
+    let screenImg= document.createElement("img");
+    screenImg.src=`${images[actual].image}`
+
+    document.getElementById("img_container").appendChild(screenImg);
+
+}
+
+/* document.getElementById("up").addEventListener("click", function(){
+
+    immagini[actual].classList.remove("active");
+
+    if(actual==percorsi.length-1){
+        actual=0;
+        immagini[actual].classList.add("active")
+    }else{
+
+        actual ++;
+        immagini[actual].classList.add("active")
+    }
+
+}) */
+
+
+
+
+
+
+
+
